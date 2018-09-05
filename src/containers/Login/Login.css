@@ -1,0 +1,21 @@
+.Login {
+  text-align: center;
+  width:60%;
+  border:1px solid black;
+  background-color: azure;
+  margin:2px auto;
+  padding:5px;
+  margin-top:80px;
+}
+
+.row{
+  display: grid;
+  grid-template-columns: 50% 50%;
+  overflow:hidden;
+}
+
+.column{
+  text-align: left;
+  padding:10px;
+  overflow:hidden;
+}
