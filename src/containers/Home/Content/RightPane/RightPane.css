@@ -2,11 +2,17 @@
     border:1px solid black;
 }
 
+.mail{
+    height:50px;
+    box-sizing: border-box;
+    margin:5px;
+    padding:0;
+}
+
 .item{
     display:grid;
-    grid-template-columns: 30% 70%;
+    grid-template-columns: 40% 60%;
     padding:10px;
-    height:50px;
 }
 
 .left{
@@ -18,6 +24,26 @@
     text-transform: capitalize;
 }
 
-.item:nth-child(odd){
+.message{
+    display:none;
+    text-align: left;
+    background-color: rgb(250,250,250);
+    min-height:60px;
+    box-sizing: border-box;
+    padding:10px;
+    margin:5px;
+}
+
+.enhance{
+    min-height:100px;
+    max-height:1000px;
+    overflow:scroll;
+}
+
+.show{
+    display:block;
+}
+
+.mail:nth-child(odd){
     background-color: rgb(240,240,240);
 }

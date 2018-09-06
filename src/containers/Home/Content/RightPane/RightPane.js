@@ -18,17 +18,34 @@ class RightPane extends Component{
         this.props.goToSent();
     }
 
+    viewMessage=(event,x)=>{
+        var c = event.target.parentElement.parentElement.parentElement;
+        var m = c.getElementsByClassName("message");
+        c.classList.toggle("enhance")
+        m[0].classList.toggle("show");
+    }
+
     render(){
         var data=null;
         if(this.props.selectedTab==="INBOX"){
             data=this.props.inbox.map(x=>{
-                return <div key={Math.random() + x.subject} className="item"><div className="left"><strong>FROM:</strong>{x.sender}</div><div className="right"><strong>SUBJECT:</strong>{x.subject}</div></div>
+                return <div className="mail" key={Math.random() + x.subject}>
+                            <div className="item" ><div className="left"><button onClick={(e) => this.viewMessage(e, x)}>Show</button><strong>FROM:</strong>{x.sender}</div><div className="right"><strong>SUBJECT:</strong>{x.subject}</div></div>
+                            <div className="message">
+                                {x.message}
+                            </div>
+                        </div>
             })
 
         }
         else if (this.props.selectedTab === "SENT"){
             data = this.props.sent.map(x => {
-                return <div key={Math.random() + x.subject}className="item"><div className="left"><strong>TO:</strong>{x.reciever}</div><div className="right"><strong>SUBJECT:</strong>{x.subject}</div></div>
+                return <div className="mail" key={Math.random() + x.subject}>
+                    <div className="item" ><div className="left"><button onClick={(e) => this.viewMessage(e, x)}>Show</button><strong>TO:</strong>{x.reciever}</div><div className="right"><strong>SUBJECT:</strong>{x.subject}</div></div>
+                            <div className="message">
+                                {x.message}
+                            </div>
+                        </div>
             })
 
         }
