@@ -8,8 +8,17 @@ class Home extends Component{
         console.log("authentication is set to " +this.props.auth);
     }
 
+    logout=()=>{
+        this.props.setAuthenticationFalse();
+        this.props.history.push("/login");
+    }
+
     render(){
-        return <h1 className='Home'>You have reached homepage</h1>
+        return (
+        <div>
+            <h1 className='Home'>You have reached homepage</h1>
+            <button onClick={this.logout}>Logout</button>
+        </div>);
     }
 }
 
