@@ -19,6 +19,20 @@
     text-align: left;
 }
 
+.left button{
+    background-color: #555555;
+    color:white;
+    font-size:15px;
+    border:1px solid black;
+    margin-right:10px;
+
+}
+
+.left button:hover{
+    background-color: black;
+
+}
+
 .right{
     text-align:left;
     text-transform: capitalize;

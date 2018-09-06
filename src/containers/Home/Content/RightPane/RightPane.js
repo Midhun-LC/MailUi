@@ -13,12 +13,20 @@ class RightPane extends Component{
             message: document.getElementById("content").value
         }
 
-        var s=Object.assign(this.props.sent).concat([email]);
+        var s=[...this.props.sent];
+        s.unshift(email);
         this.props.sendEmail(s);
         this.props.goToSent();
     }
 
     viewMessage=(event,x)=>{
+
+        if(event.target.textContent==="+"){
+            event.target.textContent="-";
+        }
+        else{
+            event.target.textContent = "+";
+        }
         var c = event.target.parentElement.parentElement.parentElement;
         var m = c.getElementsByClassName("message");
         c.classList.toggle("enhance")
@@ -30,7 +38,7 @@ class RightPane extends Component{
         if(this.props.selectedTab==="INBOX"){
             data=this.props.inbox.map(x=>{
                 return <div className="mail" key={Math.random() + x.subject}>
-                            <div className="item" ><div className="left"><button onClick={(e) => this.viewMessage(e, x)}>Show</button><strong>FROM:</strong>{x.sender}</div><div className="right"><strong>SUBJECT:</strong>{x.subject}</div></div>
+                            <div className="item" ><div className="left"><button onClick={(e) => this.viewMessage(e, x)}>+</button><strong>FROM:</strong>{x.sender}</div><div className="right"><strong>SUBJECT:</strong>{x.subject}</div></div>
                             <div className="message">
                                 {x.message}
                             </div>
@@ -41,7 +49,7 @@ class RightPane extends Component{
         else if (this.props.selectedTab === "SENT"){
             data = this.props.sent.map(x => {
                 return <div className="mail" key={Math.random() + x.subject}>
-                    <div className="item" ><div className="left"><button onClick={(e) => this.viewMessage(e, x)}>Show</button><strong>TO:</strong>{x.reciever}</div><div className="right"><strong>SUBJECT:</strong>{x.subject}</div></div>
+                    <div className="item" ><div className="left"><button onClick={(e) => this.viewMessage(e, x)}>+</button><strong>TO:</strong>{x.reciever}</div><div className="right"><strong>SUBJECT:</strong>{x.subject}</div></div>
                             <div className="message">
                                 {x.message}
                             </div>
@@ -85,7 +93,7 @@ class RightPane extends Component{
 
         return (
             <div className="Rightpane">
-                {data!=null?data:<h3>No emails to display</h3>}
+                {data.length!==0?data:<h3>No emails to display</h3>}
             </div>
         )
     }
