@@ -33,6 +33,21 @@
 
 }
 
+form button{
+    background-color: #555555;
+    color:white;
+    font-size:15px;
+    border:1px solid black;
+    padding:5px;
+    margin-top:15px;
+    margin-bottom:15px;
+}   
+
+form button:hover{
+    background-color: black;
+
+}
+
 .right{
     text-align:left;
     text-transform: capitalize;

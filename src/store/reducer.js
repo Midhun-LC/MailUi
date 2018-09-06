@@ -1,6 +1,6 @@
 var initialState={
     authenticated:false,
-    selection:"SENT",
+    selection:"INBOX",
     inbox:[
         {
             sender:"midhun@reactmail.com",
@@ -53,21 +53,18 @@ var reducer=(state=initialState,action)=>{
         }
     }
     if (action.type === "SENT") {
-        //console.log("sent emails selected")
         return {
             ...state,
             selection: "SENT"
         }
     }
     if (action.type === "COMPOSE") {
-        //console.log("sent emails selected")
         return {
             ...state,
             selection: "COMPOSE"
         }
     }
     if (action.type === "SENDEMAIL") {
-        //console.log("sent emails selected")
         return {
             ...state,
             sentmail:action.data
