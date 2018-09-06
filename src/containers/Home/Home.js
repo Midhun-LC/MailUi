@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import './Home.css';
 import { connect } from 'react-redux';
+import Content from './Content/Content';
 
 class Home extends Component{
 
@@ -16,8 +17,7 @@ class Home extends Component{
     render(){
         return (
         <div>
-            <h1 className='Home'>You have reached homepage</h1>
-            <button onClick={this.logout}>Logout</button>
+            <Content logout={this.logout}/>
         </div>);
     }
 }

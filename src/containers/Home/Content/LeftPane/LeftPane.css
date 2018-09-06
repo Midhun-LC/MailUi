@@ -1,0 +1,19 @@
+.LeftPane{
+    border:1px solid black;
+}
+
+.LeftPane button{
+    width:100%;
+    padding:10px;
+    margin:0;
+
+}
+
+.LeftPane p{
+    margin:0;
+    padding:0;
+}
+
+.active{
+    text-decoration: underline;
+}

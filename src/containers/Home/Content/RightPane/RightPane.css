@@ -1,0 +1,23 @@
+.Rightpane{
+    border:1px solid black;
+}
+
+.item{
+    display:grid;
+    grid-template-columns: 30% 70%;
+    padding:10px;
+    height:70px;
+}
+
+.email{
+    text-align: left;
+}
+
+.subject{
+    text-align:left;
+    text-transform: capitalize;
+}
+
+.item:nth-child(odd){
+    background-color: rgb(240,240,240);
+}

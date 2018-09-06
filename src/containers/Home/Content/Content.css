@@ -1,0 +1,6 @@
+.Content{
+    margin-top:70px;
+    display:grid;
+    grid-template-columns: 15% 85%;
+    background-color: rgb(210,210,210);
+}
