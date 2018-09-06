@@ -4,22 +4,65 @@ import './RightPane.css';
 
 class RightPane extends Component{
 
+    SendMessage=(event)=>{
+
+        event.preventDefault();
+        var email={
+            reciever: document.getElementById("email").value,
+            subject: document.getElementById("subject").value,
+            message: document.getElementById("content").value
+        }
+
+        var s=Object.assign(this.props.sent).concat([email]);
+        this.props.sendEmail(s);
+        this.props.goToSent();
+    }
+
     render(){
         var data=null;
         if(this.props.selectedTab==="INBOX"){
             data=this.props.inbox.map(x=>{
-                return <div key={Math.random() + x.subject} className="item"><div className="email"><strong>FROM:</strong>{x.sender}</div><div className="subject"><strong>SUBJECT:</strong>{x.subject}</div></div>
+                return <div key={Math.random() + x.subject} className="item"><div className="left"><strong>FROM:</strong>{x.sender}</div><div className="right"><strong>SUBJECT:</strong>{x.subject}</div></div>
             })
 
-            console.log(this.props.inbox)
         }
-        else{
-            //console.log(this.props.selectedTab);
+        else if (this.props.selectedTab === "SENT"){
             data = this.props.sent.map(x => {
-                return <div key={Math.random() + x.subject}className="item"><div className="email"><strong>TO:</strong>{x.reciever}</div><div className="subject"><strong>SUBJECT:</strong>{x.subject}</div></div>
+                return <div key={Math.random() + x.subject}className="item"><div className="left"><strong>TO:</strong>{x.reciever}</div><div className="right"><strong>SUBJECT:</strong>{x.subject}</div></div>
             })
 
-            console.log(this.props.sent)
+        }
+
+        else{
+            data=(
+                <form onSubmit={this.SendMessage}>
+                    <div className="item">
+                        <div className="left">
+                            To:
+                        </div>
+                        <div className="right">
+                            <input id="email" type="email" required/>
+                        </div>
+                    </div>
+                    <div className="item">
+                        <div className="left">
+                            Subject
+                        </div>
+                        <div className="right">
+                            <input  id="subject" type="text" required/>
+                        </div>
+                    </div>
+                    <div className="item">
+                        <div className="left">
+                            body
+                        </div>
+                        <div className="right">
+                            <textarea id="content" rows="3" cols="50"/>
+                        </div>
+                    </div>
+                    <button >Send</button>
+                </form>
+            )
         }
 
 
@@ -39,4 +82,12 @@ const mapPropstoState = state => {
     }
 }
 
-export default connect(mapPropstoState, null)(RightPane);
+const mapPropstoActions = dispatch => {
+    return {
+
+        sendEmail: (email) => dispatch({ type: 'SENDEMAIL' ,data:email}),
+        goToSent: () => dispatch({ type: 'SENT'})
+    }
+}
+
+export default connect(mapPropstoState, mapPropstoActions)(RightPane);

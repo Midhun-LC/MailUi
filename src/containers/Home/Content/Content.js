@@ -15,12 +15,16 @@ class Content extends Component{
         this.props.sentSelected();
     }
 
+    onComposeSelect = () => {
+        this.props.composeSelected();
+    }
+
     render(){
 
         return (
             <div className="Content">
 
-                <LeftPane inbox={this.onInBoxSelect} sent={this.onSentSelect} logout={this.props.logout}/>
+                <LeftPane inbox={this.onInBoxSelect} sent={this.onSentSelect} logout={this.props.logout} compose={this.onComposeSelect}/>
                 <RightPane/>
             </div>
         )
@@ -34,6 +38,7 @@ const mapPropstoActions = dispatch => {
 
         inboxSelected: () => dispatch({ type: 'INBOX' }),
         sentSelected: () => dispatch({ type: 'SENT' }),
+        composeSelected: () => dispatch({ type: 'COMPOSE' }),
     }
 }
 

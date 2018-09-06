@@ -15,8 +15,6 @@ class Login extends Component{
         if (this.props.auth) {
             this.props.history.push('/home');
         }
-
-        console.log("authentication is set to "+ this.props.auth)
     }
 
     onLogin=(event)=>{
@@ -28,7 +26,7 @@ class Login extends Component{
         if(username===this.state.login.username && password===this.state.login.password){
             //set global authentication state to true
             this.props.setAuthenticationTrue();
-            console.log(this.props.auth);
+            this.props.inboxSelected();
             this.props.history.push('/home');
         }
 
@@ -42,7 +40,7 @@ class Login extends Component{
         return(
             
             <div className="Login">
-                <form>
+                <form onSubmit={this.onLogin}>
                     <div className="row">
                         <div className="column">
                             <label>Enter UserName:</label>
@@ -60,7 +58,7 @@ class Login extends Component{
                             <input id="password" type="password" name="username" required/>
                         </div>
                     </div>
-                    <input type="submit" name="Submit" onClick={this.onLogin}/>
+                    <input type="submit" name="Submit" />
                 </form>
             </div>
         )
@@ -77,7 +75,7 @@ const mapPropstoActions = dispatch => {
     return {
 
         setAuthenticationTrue: () => dispatch({ type: 'AUTHENTICATED' }),
-        setAuthenticationFalse: () => dispatch({ type: 'LOGOFF' }),
+        inboxSelected: () => dispatch({ type: 'INBOX' }),
     }
 }
 

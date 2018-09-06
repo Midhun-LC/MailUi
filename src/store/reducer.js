@@ -59,6 +59,20 @@ var reducer=(state=initialState,action)=>{
             selection: "SENT"
         }
     }
+    if (action.type === "COMPOSE") {
+        //console.log("sent emails selected")
+        return {
+            ...state,
+            selection: "COMPOSE"
+        }
+    }
+    if (action.type === "SENDEMAIL") {
+        //console.log("sent emails selected")
+        return {
+            ...state,
+            sentmail:action.data
+        }
+    }
 
     return state;
 }

@@ -8,6 +8,7 @@ class LeftPane extends Component{
             <div className="LeftPane">
                 <p><button onClick={this.props.inbox}>Inbox</button></p>
                 <p><button onClick={this.props.sent}>Sent</button></p>
+                <p><button onClick={this.props.compose}>Compose Email</button></p>
                 <p><button onClick={this.props.logout}>Logout</button></p>
             </div>
         )

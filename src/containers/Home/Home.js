@@ -6,7 +6,10 @@ import Content from './Content/Content';
 class Home extends Component{
 
     componentDidMount=()=>{
-        console.log("authentication is set to " +this.props.auth);
+        //console.log("authentication is set to " +this.props.auth);
+        if(!this.props.auth){
+            this.props.history.push("/login");
+        }
     }
 
     logout=()=>{
